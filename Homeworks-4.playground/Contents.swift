@@ -154,4 +154,14 @@ func reverseString(_ input: String) -> String {
 let nString = "stressed"
 let rString = reverseString(nString)
 print(rString)
+//------------------------------------------------
+func gigasecond(from date: Date) -> Date {
+    // Define a gigasecond in seconds
+    let gigasecond: TimeInterval = 1_000_000_000
+    
+    // Add a gigasecond to the input date
+    let endDate = date.addingTimeInterval(gigasecond)
+    
+    return endDate
+}
 
