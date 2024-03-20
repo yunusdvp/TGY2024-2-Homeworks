@@ -1,5 +1,5 @@
 import Foundation
-
+/*
 // MARK: Verilen sayıya göre +-+- yazdıran fonksiyon
 func printPM(_ number: Int) {
     var output = ""
@@ -67,8 +67,9 @@ func maximizeNumber(_ number: Int) -> String {
 
 
 print(maximizeNumber(0))
-print(maximizeNumber(82))
+print(maximizeNumber(554))
 print(maximizeNumber(-920))
 
-
-
+*/
+//let number = 3.
+let roundedNumber = round(number)
