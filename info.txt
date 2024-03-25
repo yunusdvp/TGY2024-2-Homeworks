@@ -1,0 +1,6 @@
+AD SOYAD: Yunus Emre Özşahin
+Okul/İş: Sakarya Üniversitesi
+Swift Bilgisi: Temel
+Yaş: 22
+Yaşadığı Şehir : Mersin
+email: yunusemre7033@gmail.com
