@@ -56,6 +56,7 @@
 		46309DBC2BB78124005466FC /* HavaDurumu */ = {
 			isa = PBXGroup;
 			children = (
+				46D1E07B2BB790F500BC9FAE /* New Group */,
 				46309DBD2BB78124005466FC /* AppDelegate.swift */,
 				46309DBF2BB78124005466FC /* SceneDelegate.swift */,
 				46309DC12BB78124005466FC /* ViewController.swift */,
@@ -65,6 +66,13 @@
 				46309DCB2BB78126005466FC /* Info.plist */,
 			);
 			path = HavaDurumu;
+			sourceTree = "<group>";
+		};
+		46D1E07B2BB790F500BC9FAE /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Group";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
