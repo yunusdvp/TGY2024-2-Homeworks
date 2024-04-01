@@ -85,7 +85,7 @@ extension ViewController: CLLocationManagerDelegate {
             print(icon)
         }
         if let description = data["description"] as? String{
-            popLabel.text = description
+            popLabel.text = description.uppercased()
             print(description)
         }
         

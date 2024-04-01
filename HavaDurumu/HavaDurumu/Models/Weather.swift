@@ -46,3 +46,10 @@ struct DailyWeatherData {
     let date: Date
     var hourlyData: [HourlyWeatherData]
 }
+struct WeatherData {
+    let date: Date
+    let temperature: Double
+    let humidity: Int
+    let weatherDescription: String
+    let precipitationProbability: Double
+}
