@@ -17,32 +17,56 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8ff-VA-u57" customClass="HeaderView" customModule="BipClone" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="59" width="393" height="40"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="h8e-Al-ghT">
+                                <rect key="frame" x="0.0" y="69" width="393" height="250"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8ff-VA-u57" customClass="HeaderView" customModule="BipClone" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="40"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="0IL-v9-Ede"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="yQH-ij-VBt"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nXT-Ky-gpD" customClass="StatusView" customModule="BipClone" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="40" width="393" height="100"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="100" id="5AB-lY-bFa"/>
+                                        </constraints>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="24 ssat sonra kaybolan fotoğraf ve video paylaşabilirsiniz. Şu anda gösterilecek yeni güncelleme yok." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="czA-5I-MWb">
+                                        <rect key="frame" x="0.0" y="140" width="393" height="110"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="0IL-v9-Ede"/>
+                                    <constraint firstAttribute="trailing" secondItem="czA-5I-MWb" secondAttribute="trailing" id="QTj-4i-SvC"/>
+                                    <constraint firstItem="czA-5I-MWb" firstAttribute="top" secondItem="nXT-Ky-gpD" secondAttribute="bottom" id="SUL-Lj-cax"/>
+                                    <constraint firstItem="czA-5I-MWb" firstAttribute="leading" secondItem="h8e-Al-ghT" secondAttribute="leading" id="W77-LR-6Uj"/>
                                 </constraints>
-                            </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nXT-Ky-gpD">
-                                <rect key="frame" x="16" y="144" width="377" height="593"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            </view>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="8ff-VA-u57" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Dd5-8G-BGN"/>
-                            <constraint firstItem="8ff-VA-u57" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="KRv-sz-7pz"/>
-                            <constraint firstItem="8ff-VA-u57" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="ewm-Yu-HFI"/>
+                            <constraint firstAttribute="trailing" secondItem="h8e-Al-ghT" secondAttribute="trailing" id="6bx-9a-3FD"/>
+                            <constraint firstItem="h8e-Al-ghT" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="9mT-Jz-TAt"/>
+                            <constraint firstItem="h8e-Al-ghT" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="YbQ-nM-wbP"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="h8e-Al-ghT" secondAttribute="bottom" constant="450" id="hTR-v6-TDA"/>
+                            <constraint firstItem="h8e-Al-ghT" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="uxF-oC-hNb"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Durum" id="bWU-Nl-XlV">
                         <imageReference key="image" image="circle.badge.plus" catalog="system" renderingMode="original" variableValue="0.60000000000000009"/>
                     </tabBarItem>
                     <connections>
+                        <outlet property="emptyLabel" destination="czA-5I-MWb" id="Mpt-AL-hGG"/>
                         <outlet property="headerView" destination="8ff-VA-u57" id="eqN-wT-r0c"/>
+                        <outlet property="statusView" destination="nXT-Ky-gpD" id="ecG-uo-8PV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

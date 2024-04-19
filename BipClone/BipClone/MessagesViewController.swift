@@ -17,7 +17,7 @@ class MessagesViewController: UIViewController {
     override func viewDidLoad() {
         let model = HeaderModel(header: "Mesajlar")
         headerView.setup(model: model)
-        messages.append(MessageModel(sender: "905734387033", message: "Merhabalar", senderImageName: "image3"))
+        messages.append(MessageModel(sender: "Geleceği Yazanlar", message: "Merhabalar", senderImageName: "image3"))
         messages.append(MessageModel(sender: "905734380000", message: "İyi Akşamlar", senderImageName: "image4"))
         messages.append(MessageModel(sender: "905734387033", message: "Görüşmek üzere", senderImageName: "image5"))
         super.viewDidLoad()
