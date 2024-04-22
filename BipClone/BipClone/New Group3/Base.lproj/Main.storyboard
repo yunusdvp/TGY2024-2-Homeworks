@@ -150,7 +150,7 @@
         <!--Aramalar-->
         <scene sceneID="5XK-og-yke">
             <objects>
-                <viewController id="1Wt-rm-2wD" sceneMemberID="viewController">
+                <viewController id="1Wt-rm-2wD" customClass="CallsViewController" customModule="BipClone" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Z4Z-U2-C2D">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
