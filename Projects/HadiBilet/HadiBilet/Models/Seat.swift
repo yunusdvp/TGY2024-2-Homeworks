@@ -7,6 +7,9 @@
 
 import Foundation
 
-struct Seat{
-    var no: Int?
+struct Seat {
+    var no: Int
+    var isEmpty: Bool
+    var passengerGender: Bool?
 }
+

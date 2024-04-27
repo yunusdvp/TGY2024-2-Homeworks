@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CityFieldView" customModule="HadiBilet" customModuleProvider="target">
+            <connections>
+                <outlet property="cityTextField" destination="Nzf-DX-oqV" id="a60-7O-tmo"/>
+                <outlet property="containerView" destination="Vwq-Nb-sjD" id="LPm-Ih-Ban"/>
+                <outlet property="headerLabel" destination="Bqz-0T-0gm" id="2yr-m7-E85"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleAspectFit" id="JBZ-TQ-7j5">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="220"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vwq-Nb-sjD">
+                    <rect key="frame" x="0.0" y="0.0" width="393" height="186"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="center" axis="vertical" alignment="center" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="ONd-VF-kce">
+                            <rect key="frame" x="0.0" y="0.0" width="393" height="186"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lütfen Seçin" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bqz-0T-0gm">
+                                    <rect key="frame" x="103.33333333333333" y="0.0" width="186.33333333333337" height="42"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <textField opaque="NO" contentMode="top" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Nereden" textAlignment="center" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Nzf-DX-oqV">
+                                    <rect key="frame" x="116" y="45" width="161" height="141"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="44"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                </textField>
+                            </subviews>
+                            <constraints>
+                                <constraint firstItem="Nzf-DX-oqV" firstAttribute="centerX" secondItem="ONd-VF-kce" secondAttribute="centerX" id="O3z-wQ-6qB"/>
+                                <constraint firstItem="Bqz-0T-0gm" firstAttribute="centerX" secondItem="ONd-VF-kce" secondAttribute="centerX" id="Vhp-KW-SEz"/>
+                            </constraints>
+                        </stackView>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="ONd-VF-kce" firstAttribute="top" secondItem="Vwq-Nb-sjD" secondAttribute="top" id="BM5-NI-DBC"/>
+                        <constraint firstAttribute="trailing" secondItem="ONd-VF-kce" secondAttribute="trailing" id="L3b-RG-ZZ9"/>
+                        <constraint firstItem="ONd-VF-kce" firstAttribute="leading" secondItem="Vwq-Nb-sjD" secondAttribute="leading" id="QMm-HV-UVS"/>
+                        <constraint firstAttribute="bottom" secondItem="ONd-VF-kce" secondAttribute="bottom" id="VbY-ap-bta"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="lP0-VO-Kkk"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="Vwq-Nb-sjD" firstAttribute="leading" secondItem="lP0-VO-Kkk" secondAttribute="leading" id="4ye-Y8-aS7"/>
+                <constraint firstItem="Vwq-Nb-sjD" firstAttribute="top" secondItem="JBZ-TQ-7j5" secondAttribute="top" id="Fgd-vE-av3"/>
+                <constraint firstItem="Vwq-Nb-sjD" firstAttribute="bottom" secondItem="lP0-VO-Kkk" secondAttribute="bottom" id="TeK-s4-wwz"/>
+                <constraint firstItem="lP0-VO-Kkk" firstAttribute="trailing" secondItem="Vwq-Nb-sjD" secondAttribute="trailing" id="g9b-Ku-ZNh"/>
+                <constraint firstItem="lP0-VO-Kkk" firstAttribute="bottom" secondItem="Vwq-Nb-sjD" secondAttribute="bottom" id="hXb-w1-gMU"/>
+                <constraint firstItem="Vwq-Nb-sjD" firstAttribute="top" secondItem="JBZ-TQ-7j5" secondAttribute="top" id="oZe-2Y-KmT"/>
+                <constraint firstItem="Vwq-Nb-sjD" firstAttribute="leading" secondItem="lP0-VO-Kkk" secondAttribute="leading" id="yMW-LK-edx"/>
+                <constraint firstItem="Vwq-Nb-sjD" firstAttribute="trailing" secondItem="lP0-VO-Kkk" secondAttribute="trailing" id="zqk-6k-xFj"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="-518.32061068702285" y="-204.92957746478874"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

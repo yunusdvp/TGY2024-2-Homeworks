@@ -11,7 +11,7 @@ struct Ticket{
     var date: DateStruct?
     var time: Time?
     var seat: Seat?
-    var numberofseat: Int?
+    
     
     
 }

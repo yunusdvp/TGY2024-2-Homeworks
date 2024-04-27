@@ -6,40 +6,91 @@
 //
 
 import UIKit
+import Foundation
 import Firebase
 class ViewController: UIViewController {
-    let db = Firestore.firestore()
+    @IBOutlet weak var JourneysTableView: UITableView!
+    let firebaseHelpers = FirebaseHelpers()
+    var nereden : String?
+    var nereye : String?
+    var day: Int?
+    var month: Int?
+
+    var journeys = [Journey]()
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-
-        // Firebase projeniz için konfigürasyonu yapılandırın
-        //FirebaseApp.configure()
-        let newPassenger = Passenger(id: "123456",name:"Yunus Emre",surname: "Doe")
-        // Firestore referansını alın
-        addPassengerToFirestore(passenger: newPassenger)
-
-    }
-
-    func addPassengerToFirestore(passenger: Passenger) {
-        // Firestore koleksiyonunu ve belgeyi belirleyin
-        let passengersCollection = db.collection("passengers")
-        
-        // Yeni bir belge referansı oluşturun (Firestore otomatik olarak belge ID'si atayacak)
-        var newPassengerRef: DocumentReference? = nil
-        
-        // Yeni bir belge oluşturun ve verileri ekleyin
-        newPassengerRef = passengersCollection.addDocument(data: [
-            "name": passenger.name ?? "",       // name değeri, passenger.name'in değeri olacak veya boş bir string
-            "surname": passenger.surname ?? "",
-            "id": passenger.id ?? ""// surname değeri, passenger.surname'un değeri olacak veya boş bir string
-        ]) { error in
-            if let error = error {
-                print("Hata oluştu, belge eklenemedi: \(error)")
-            } else {
-                print("Yeni belge eklendi. Belge ID: \(newPassengerRef!.documentID)")
+        JourneysTableView.dataSource = self
+        JourneysTableView.delegate = self
+        JourneysTableView.register(UINib(nibName: JourneyCell.identifier, bundle: nil), forCellReuseIdentifier: JourneyCell.identifier)
+        firebaseHelpers.fetchFilteredJourneys(fromCity: "\(nereden ?? "")", toCity: "\(nereye ?? "")", departureDay: day ?? 0, departureMonth: month ?? 0) { [weak self] journeys in
+            guard let self else { return }
+            DispatchQueue.main.async {
+                print(journeys)
+                self.updateUI(with: journeys)
+                
             }
         }
+        /*DispatchQueue.main.async {
+            self.firebaseHelpers.fetchFilteredJourneys(fromCity: "Mersin", toCity: "Adana", departureDay: 3, departureMonth: 5) { [weak self] journeys in
+                DispatchQueue.main.async {
+                    print(journeys)
+                }
+            }
+         
+         }*/
+        
+        
+        
+        
+        // Firebase projeniz için konfigürasyonu yapılandırın
+        //FirebaseApp.configure()
+        /*let newPassenger = Passenger(id: "123456",name:"Yunus Emre",surname: "Doe")
+         firebaseHelpers.addPassengerToFirestore(passenger: newPassenger)        // Firestore referansını alın
+         //addPassengerToFirestore(passenger: newPassenger)*/
+        //FirebaseApp.configure()
+        
+        
+        
     }
+    func updateUI(with journeys: [Journey]) {
+        // Burada collectionView ya da tableView'ınızı güncelleyebilirsiniz
+        self.journeys = journeys
+        self.JourneysTableView.reloadData()  // Veya self.collectionView.reloadData()
+    }
+    
 }
+extension ViewController: UITableViewDelegate,UITableViewDataSource{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        journeys.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: JourneyCell.identifier, for: indexPath) as? JourneyCell else {
+            return UITableViewCell()
+        }
+        cell.configure(with: journeys[indexPath.row])
+        
+        return cell
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+            performSegue(withIdentifier: "goToBusTicket", sender: indexPath)
+        }
+
+        override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+            if segue.identifier == "goToBusTicket" {
+                if let destinationVC = segue.destination as? BusTicketViewController,
+                   let indexPath = sender as? IndexPath {
+                    destinationVC.journey = journeys[indexPath.row]
+                }
+            }
+        }
+
+   
+
+    
+    
+}
+
+    
+
 

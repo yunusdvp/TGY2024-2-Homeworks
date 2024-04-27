@@ -7,8 +7,10 @@
 
 import Foundation
 
-struct DateStruct{
-    let day: Int?
-    let month: Int?
-    let year: Int?
+struct DateStruct {
+    var day: Int
+    var month: Int
+    var year: Int
+    var minute: Int
+    var hour: Int
 }

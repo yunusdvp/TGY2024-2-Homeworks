@@ -6,8 +6,10 @@
 //
 
 import Foundation
+
 struct Passenger{
     let id: String?
     var name :String?
     var surname: String?
 }
+
