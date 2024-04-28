@@ -10,27 +10,35 @@ import UIKit
 class BusTicketViewController: UIViewController {
     var journey :Journey?
     
-    //@IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var busSeatCollectionView: UICollectionView!
     
-   // @IBOutlet weak var busFrontImage: UIImageView!
+    @IBOutlet weak var busFrontImage: UIImageView!
+    // @IBOutlet weak var busFrontImage: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
         print(journey)
+        configureCollectionView()
+        // Do any additional setup after loading the view.
+    }
+    private func configureCollectionView(){
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        layout.minimumInteritemSpacing = 5
+            
+        layout.minimumLineSpacing = 5
+        layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        busSeatCollectionView.setCollectionViewLayout(layout, animated: true)
         busSeatCollectionView.delegate = self
         busSeatCollectionView.dataSource = self
         busSeatCollectionView.register(UINib(nibName: "SeatCell", bundle: nil), forCellWithReuseIdentifier: SeatCell.identifier)
-        // Do any additional setup after loading the view.
+        
     }
-    
-
-
-
 }
-extension BusTicketViewController: UICollectionViewDelegate,UICollectionViewDataSource{
+extension BusTicketViewController: UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         print(journey?.seatCapacity)
-        return journey?.seatCapacity ?? 0
+        return (journey?.seats.count ?? 0)
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -45,8 +53,12 @@ extension BusTicketViewController: UICollectionViewDelegate,UICollectionViewData
         return cell
     }
 
-    
-    
-    
-    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        var itemHeight = collectionView.bounds.height/4
+        var itemWidth =  itemHeight
+        
+        
+        return CGSize(width: itemWidth, height: itemHeight)
+        
+    }
 }

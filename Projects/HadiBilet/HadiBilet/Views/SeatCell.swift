@@ -11,30 +11,56 @@ import UIKit
 class SeatCell: UICollectionViewCell {
     
     @IBOutlet weak var seatNoLabel: UILabel!
+    @IBOutlet weak var containerView: UIView!
+    private var backgroundImageView: UIImageView?
     static let identifier = "SeatCell"
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        setupBackgroundImageView()
     }
-
-    
-    func configure(with model: Seat?) {
-        // Koltuk numarasını güvenli bir şekilde string'e çevir ve ayarla
-        seatNoLabel.text = "\(String(describing: model?.no))" // -1, numara yoksa varsayılan değer olarak gösterilebilir veya "N/A"
-
-        // Koltuğun doluluk durumuna ve yolcu cinsiyetine göre arka plan rengini ayarlayın
-        if let model = model {
-            if !model.isEmpty {
-                // Koltuk doluysa, cinsiyet bilgisine göre renk belirle
-                backgroundColor = model.passengerGender ?? false ? .blue : .red
-            } else {
-                // Koltuk boşsa gri göster
-                backgroundColor = .gray
-            }
-        } else {
-            // Model nil ise, varsayılan olarak gri yap
-            backgroundColor = .gray
+    override init(frame: CGRect) {
+           super.init(frame: frame)
+           //setupBackgroundImageView()
+       }
+       
+    required init?(coder: NSCoder) {
+           super.init(coder: coder)
+           
+       }
+       
+    private func setupBackgroundImageView() {
+            // ImageView'i oluştur ve ayarla
+            let imageView = UIImageView(frame: containerView.bounds)
+            imageView.image = UIImage(named: "BusSeatIcon")
+            imageView.contentMode = .scaleAspectFill // Resmin boyutunu düzgün ayarla
+            imageView.clipsToBounds = true
+            containerView.insertSubview(imageView, at: 0)
+            backgroundImageView = imageView
+            
+            // Autoresizing kullanarak imageView'ın boyutlarını containerView'a sığdır
+            imageView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+            
+            // containerView için varsayılan arka plan rengini ayarla
+            containerView.backgroundColor = .gray
         }
-    }
+        
+        func configure(with model: Seat?) {
+            
+            guard let model = model else {
+                containerView.backgroundColor = .gray
+                seatNoLabel.text = "N/A"
+                return
+            }
+            containerView.bringSubviewToFront(seatNoLabel)
+            seatNoLabel.text = "\(model.no)"
+            
+            //seatNoLabel.textColor = .white // Etiketin okunabilirliğini artır
+            if model.isEmpty {
+                containerView.backgroundColor = .lightGray
+            } else {
+                containerView.backgroundColor = model.passengerGender ?? false ? .blue : .red
+            }
+        }
+
 }
