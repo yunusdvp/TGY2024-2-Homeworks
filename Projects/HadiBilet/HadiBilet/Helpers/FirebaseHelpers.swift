@@ -6,7 +6,7 @@
 //
 
 import Foundation
-// Örnek FirebaseHelpers.swift
+
 
 import Firebase
 
@@ -14,31 +14,26 @@ class FirebaseHelpers {
     let db = Firestore.firestore()
     
     static func getUserDataFromFirebase(completion: @escaping (User?, Error?) -> Void) {
-        // Firebase'den kullanıcı verilerini alma işlemi
-        // Örnek kod
+        
         let currentUser = Auth.auth().currentUser
         
         // Kullanıcı verilerini döndürme
         if let user = currentUser {
-            // Kullanıcı verilerini alarak completion closure'ına geçirme
+            
             completion(user, nil)
         } else {
-            // Hata durumunda hata geçirme
+            
             completion(nil, NSError(domain: "YourAppDomain", code: 404, userInfo: ["message": "User not found"]))
         }
     }
     func addPassengerToFirestore(passenger: Passenger) {
-        // Firestore koleksiyonunu ve belgeyi belirleyin
+        
         let passengersCollection = db.collection("passengers")
-        
-        // Yeni bir belge referansı oluşturun (Firestore otomatik olarak belge ID'si atayacak)
         var newPassengerRef: DocumentReference? = nil
-        
-        // Yeni bir belge oluşturun ve verileri ekleyin
         newPassengerRef = passengersCollection.addDocument(data: [
-            "name": passenger.name ?? "",       // name değeri, passenger.name'in değeri olacak veya boş bir string
+            "name": passenger.name ?? "",
             "surname": passenger.surname ?? "",
-            "id": passenger.id ?? ""// surname değeri, passenger.surname'un değeri olacak veya boş bir string
+            "id": passenger.id ?? ""
         ]) { error in
             if let error = error {
                 print("Hata oluştu, belge eklenemedi: \(error)")
@@ -62,8 +57,6 @@ class FirebaseHelpers {
                 completion([])
                 return
             }
-
-            // Güvenli bir şekilde snapshot'ı unwrap et
             guard let documents = snapshot?.documents else {
                 print("No documents found")
                 completion([])
@@ -82,6 +75,7 @@ class FirebaseHelpers {
                    let seatsArray = data["seats"] as? [[String: Any]] {
 
                     let journey = Journey(
+                        id: document.documentID,
                         fromCity: City(cityName: fromCityName),
                         toCity: City(cityName: toCityName),
                         journeyCompany: BusCompany(companyName: companyName),
@@ -125,9 +119,44 @@ class FirebaseHelpers {
         while arrivalDate.hour >= 24 {
             arrivalDate.hour -= 24
             arrivalDate.day += 1
-            // Handle end of month/year transitions if needed
+            
         }
         return arrivalDate
     }
+
+    func updateSeatInJourney(journeyId: String, updatedSeat: Seat, completion: @escaping (Bool) -> Void) {
+        let db = Firestore.firestore()
+        let journeyRef = db.collection("journeys").document(journeyId)
+        journeyRef.getDocument { (document, error) in
+            if let document = document, document.exists {
+                var journey = document.data()
+                if var seats = journey?["seats"] as? [[String: Any]] {
+                    
+                    if let index = seats.firstIndex(where: { ($0["no"] as? Int) == updatedSeat.no }) {
+                        var seatData = seats[index]
+                        seatData["isEmpty"] = updatedSeat.isEmpty
+                        seatData["passengerGender"] = updatedSeat.passengerGender
+                        if let passenger = updatedSeat.passenger {
+                            seatData["passenger"] = ["id": passenger.id, "name": passenger.name, "surname": passenger.surname]
+                        }
+                        seats[index] = seatData
+                    }
+                    journeyRef.updateData(["seats": seats]) { error in
+                        if let error = error {
+                            print("Error updating seats: \(error)")
+                            completion(false)
+                        } else {
+                            print("Seats updated successfully")
+                            completion(true)
+                        }
+                    }
+                }
+            } else {
+                print("Document does not exist or failed to fetch journey")
+                completion(false)
+            }
+        }
+    }
+
 }
 

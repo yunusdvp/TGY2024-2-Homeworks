@@ -11,5 +11,6 @@ struct Seat {
     var no: Int
     var isEmpty: Bool
     var passengerGender: Bool?
+    var passenger: Passenger?
 }
 

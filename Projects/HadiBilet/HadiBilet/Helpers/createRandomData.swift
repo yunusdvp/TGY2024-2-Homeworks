@@ -23,7 +23,7 @@ func uploadJourneysToFirestore(journeys: [Journey]) {
             [
                 "no": seat.no,
                 "isEmpty": seat.isEmpty,
-                "passengerGender": seat.passengerGender as Any  // Store as Any because Bool? can be nil
+                "passengerGender": seat.passengerGender as Any
             ]
         }
 
@@ -35,7 +35,7 @@ func uploadJourneysToFirestore(journeys: [Journey]) {
             "price": journey.price,
             "capacity": journey.seatCapacity,
             "travelDuration": journey.travelDuration,
-            "seats": seatsData  // Include the seats array in the document
+            "seats": seatsData  
         ]
         
         db.collection("journeys").addDocument(data: docData) { error in
@@ -48,7 +48,7 @@ func uploadJourneysToFirestore(journeys: [Journey]) {
     }
 }
 
-// Yolculuk süresine göre fiyat hesaplama
+
 func calculatePriceBasedOnDuration(duration: Int) -> Int {
     switch duration {
     case 0..<3:
@@ -60,7 +60,7 @@ func calculatePriceBasedOnDuration(duration: Int) -> Int {
     case 12...:
         return Int.random(in: 1000...1300)
     default:
-        return 200  // Eğer hiçbir koşula uymazsa en düşük aralık
+        return 200
     }
 }
 

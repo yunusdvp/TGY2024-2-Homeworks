@@ -12,14 +12,23 @@ class BusTicketViewController: UIViewController {
     
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var busSeatCollectionView: UICollectionView!
-    
     @IBOutlet weak var busFrontImage: UIImageView!
-    // @IBOutlet weak var busFrontImage: UIImageView!
+    
+    let firebaseHelpers = FirebaseHelpers()
     override func viewDidLoad() {
         super.viewDidLoad()
         print(journey)
         configureCollectionView()
-        // Do any additional setup after loading the view.
+        /*let passenger = Passenger(id: "p123", name: "Yunus", surname: "Özşahin")
+        let updatedSeat = Seat(no: 1, isEmpty: false, passengerGender: true, passenger: passenger)
+        firebaseHelpers.updateSeatInJourney(journeyId: "03KNCTMnXdPFBFPPysCf", updatedSeat: updatedSeat) { success in
+            if success {
+                print("Seat updated successfully")
+            } else {
+                print("Failed to update seat")
+            }
+        }*/
+
     }
     private func configureCollectionView(){
         let layout = UICollectionViewFlowLayout()

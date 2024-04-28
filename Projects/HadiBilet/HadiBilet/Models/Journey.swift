@@ -8,6 +8,7 @@
 import Foundation
 
 struct Journey {
+    var id: String?
     var fromCity: City
     var toCity: City
     var journeyCompany: BusCompany
