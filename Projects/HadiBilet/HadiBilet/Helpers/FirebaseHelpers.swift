@@ -49,7 +49,7 @@ class FirebaseHelpers {
             .whereField("toCity", isEqualTo: toCity)
             .whereField("departureDate.day", isEqualTo: departureDay)
             .whereField("departureDate.month", isEqualTo: departureMonth)
-
+        
         query.getDocuments { (snapshot, error) in
             var journeys: [Journey] = []
             if let error = error {
@@ -62,7 +62,7 @@ class FirebaseHelpers {
                 completion([])
                 return
             }
-
+            
             for document in documents {
                 let data = document.data()
                 if let fromCityName = data["fromCity"] as? String,
@@ -73,7 +73,7 @@ class FirebaseHelpers {
                    let price = data["price"] as? Int,
                    let travelDuration = data["travelDuration"] as? Int,
                    let seatsArray = data["seats"] as? [[String: Any]] {
-
+                    
                     let journey = Journey(
                         id: document.documentID,
                         fromCity: City(cityName: fromCityName),
@@ -91,8 +91,8 @@ class FirebaseHelpers {
             completion(journeys)
         }
     }
-
-
+    
+    
     func parseDate(_ dateDict: [String: Any]) -> DateStruct {
         return DateStruct(
             day: dateDict["day"] as? Int ?? 0,
@@ -102,7 +102,7 @@ class FirebaseHelpers {
             hour: dateDict["hour"] as? Int ?? 0
         )
     }
-
+    
     func parseSeats(_ seatsArray: [[String: Any]]) -> [Seat] {
         return seatsArray.compactMap { seatDict in
             if let no = seatDict["no"] as? Int,
@@ -112,7 +112,7 @@ class FirebaseHelpers {
             return nil
         }
     }
-
+    
     func calculateArrivalDate(from departureDate: DateStruct, duration: Int) -> DateStruct {
         var arrivalDate = departureDate
         arrivalDate.hour += duration
@@ -123,40 +123,46 @@ class FirebaseHelpers {
         }
         return arrivalDate
     }
-
-    func updateSeatInJourney(journeyId: String, updatedSeat: Seat, completion: @escaping (Bool) -> Void) {
+    
+    func updateSelectedSeatsInJourney(journeyId: String, seats: [Seat], selectedIndexes: [Int], completion: @escaping (Bool) -> Void) {
         let db = Firestore.firestore()
         let journeyRef = db.collection("journeys").document(journeyId)
+
         journeyRef.getDocument { (document, error) in
-            if let document = document, document.exists {
-                var journey = document.data()
-                if var seats = journey?["seats"] as? [[String: Any]] {
-                    
-                    if let index = seats.firstIndex(where: { ($0["no"] as? Int) == updatedSeat.no }) {
-                        var seatData = seats[index]
-                        seatData["isEmpty"] = updatedSeat.isEmpty
-                        seatData["passengerGender"] = updatedSeat.passengerGender
-                        if let passenger = updatedSeat.passenger {
-                            seatData["passenger"] = ["id": passenger.id, "name": passenger.name, "surname": passenger.surname]
-                        }
-                        seats[index] = seatData
+            if let document = document, document.exists, var journeyData = document.data() {
+                var existingSeats = journeyData["seats"] as? [[String: Any]] ?? []
+                
+                for index in selectedIndexes {
+                    guard index < existingSeats.count, index < seats.count else { continue }
+                    let seat = seats[index]
+                    var seatData = existingSeats[index]
+                    seatData["isEmpty"] = seat.isEmpty
+                    seatData["passengerGender"] = seat.passengerGender
+                    if let passenger = seat.passenger {
+                        seatData["passenger"] = [
+                            "id": passenger.id,
+                            "name": passenger.name,
+                            "surname": passenger.surname,
+                            "passengerGender": passenger.passengerGender
+                        ]
                     }
-                    journeyRef.updateData(["seats": seats]) { error in
-                        if let error = error {
-                            print("Error updating seats: \(error)")
-                            completion(false)
-                        } else {
-                            print("Seats updated successfully")
-                            completion(true)
-                        }
+                    existingSeats[index] = seatData
+                }
+
+                journeyRef.updateData(["seats": existingSeats]) { error in
+                    if let error = error {
+                        print("Koltukları güncellerken hata oluştu: \(error)")
+                        completion(false)
+                    } else {
+                        print("Koltuklar başarıyla güncellendi")
+                        completion(true)
                     }
                 }
             } else {
-                print("Document does not exist or failed to fetch journey")
+                print("Belge bulunamadı veya hata oluştu: \(error?.localizedDescription ?? "Bilinmeyen hata")")
                 completion(false)
             }
         }
     }
 
 }
-

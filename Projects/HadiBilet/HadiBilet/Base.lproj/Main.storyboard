@@ -116,10 +116,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W9j-mE-pVu">
-                                <rect key="frame" x="0.0" y="411" width="393" height="358"/>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="W9j-mE-pVu" customClass="PassengerInfoView" customModule="HadiBilet" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="411" width="393" height="289"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y93-qN-ZWz">
+                                <rect key="frame" x="0.0" y="708" width="393" height="97"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Satın Al"/>
+                                <connections>
+                                    <action selector="BuyTicketButton:" destination="Szt-TV-KMc" eventType="touchUpInside" id="Rlt-Qw-JI8"/>
+                                </connections>
+                            </button>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceHorizontal="YES" pagingEnabled="YES" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bGM-2D-1u5">
                                 <rect key="frame" x="16" y="103" width="349" height="308"/>
                                 <subviews>
@@ -130,7 +138,7 @@
                                         </constraints>
                                     </imageView>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="tgJ-VN-yP7">
-                                        <rect key="frame" x="100" y="8" width="650" height="292"/>
+                                        <rect key="frame" x="100" y="8" width="449" height="292"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="wm6-yo-6ns">
                                             <size key="itemSize" width="128" height="128"/>
@@ -155,7 +163,7 @@
                                     <constraint firstAttribute="trailing" secondItem="tgJ-VN-yP7" secondAttribute="trailing" priority="500" id="4cK-Rd-IvU"/>
                                     <constraint firstItem="Bcv-Sj-237" firstAttribute="leading" secondItem="bGM-2D-1u5" secondAttribute="leading" constant="-14" id="5uU-N4-L34"/>
                                     <constraint firstAttribute="bottom" secondItem="Bcv-Sj-237" secondAttribute="bottom" id="67P-zA-PYb"/>
-                                    <constraint firstItem="tgJ-VN-yP7" firstAttribute="trailing" secondItem="eLg-Yw-p40" secondAttribute="trailing" constant="401" id="FIC-14-sV4"/>
+                                    <constraint firstItem="tgJ-VN-yP7" firstAttribute="trailing" secondItem="eLg-Yw-p40" secondAttribute="trailing" constant="200" id="FIC-14-sV4"/>
                                     <constraint firstItem="Bcv-Sj-237" firstAttribute="bottom" secondItem="eLg-Yw-p40" secondAttribute="bottom" id="GQm-jS-qDK"/>
                                     <constraint firstItem="tgJ-VN-yP7" firstAttribute="leading" secondItem="Bcv-Sj-237" secondAttribute="trailing" constant="8" symbolic="YES" id="IRX-d1-hsV"/>
                                     <constraint firstItem="Bcv-Sj-237" firstAttribute="top" secondItem="dl7-5C-jKC" secondAttribute="top" id="LuX-Qr-iTX"/>
@@ -169,20 +177,26 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="0vw-3c-7C7" firstAttribute="trailing" secondItem="bGM-2D-1u5" secondAttribute="trailing" constant="28" id="006-fz-N0J"/>
+                            <constraint firstItem="W9j-mE-pVu" firstAttribute="leading" secondItem="0vw-3c-7C7" secondAttribute="leading" id="Edh-hs-mwP"/>
                             <constraint firstItem="W9j-mE-pVu" firstAttribute="top" secondItem="bGM-2D-1u5" secondAttribute="bottom" id="FSB-G8-dsP"/>
+                            <constraint firstItem="W9j-mE-pVu" firstAttribute="trailing" secondItem="0vw-3c-7C7" secondAttribute="trailing" id="HyU-lf-gV9"/>
                             <constraint firstItem="W9j-mE-pVu" firstAttribute="trailing" secondItem="0vw-3c-7C7" secondAttribute="trailing" id="Mbw-ej-q7b"/>
                             <constraint firstItem="W9j-mE-pVu" firstAttribute="top" secondItem="bGM-2D-1u5" secondAttribute="bottom" id="RAU-6n-1nQ"/>
                             <constraint firstAttribute="bottom" secondItem="bGM-2D-1u5" secondAttribute="bottom" constant="441" id="UHn-Nd-13A"/>
-                            <constraint firstItem="W9j-mE-pVu" firstAttribute="bottom" secondItem="0vw-3c-7C7" secondAttribute="bottom" id="Zxo-4n-msJ"/>
+                            <constraint firstItem="Y93-qN-ZWz" firstAttribute="leading" secondItem="W9j-mE-pVu" secondAttribute="leading" id="Zis-TD-fP5"/>
+                            <constraint firstItem="W9j-mE-pVu" firstAttribute="bottom" secondItem="Y93-qN-ZWz" secondAttribute="bottom" id="Zxo-4n-msJ"/>
                             <constraint firstItem="bGM-2D-1u5" firstAttribute="top" secondItem="0vw-3c-7C7" secondAttribute="top" id="gQN-iB-ggv"/>
                             <constraint firstItem="bGM-2D-1u5" firstAttribute="leading" secondItem="2ay-Rj-Fwr" secondAttribute="leadingMargin" id="jlL-3G-rpc"/>
                             <constraint firstItem="W9j-mE-pVu" firstAttribute="leading" secondItem="0vw-3c-7C7" secondAttribute="leading" id="r3g-iB-cqH"/>
+                            <constraint firstItem="W9j-mE-pVu" firstAttribute="bottom" secondItem="0vw-3c-7C7" secondAttribute="bottom" id="uf5-hM-pWW"/>
+                            <constraint firstItem="Y93-qN-ZWz" firstAttribute="trailing" secondItem="W9j-mE-pVu" secondAttribute="trailing" id="zS5-dj-dSt"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="4rg-DH-5fD"/>
                     <connections>
                         <outlet property="busFrontImage" destination="Bcv-Sj-237" id="B83-41-1Te"/>
                         <outlet property="busSeatCollectionView" destination="tgJ-VN-yP7" id="v6y-oo-Wly"/>
+                        <outlet property="passengeerInfoView" destination="W9j-mE-pVu" id="Oia-zH-VpK"/>
                         <outlet property="scrollView" destination="bGM-2D-1u5" id="Q8H-mx-0EE"/>
                     </connections>
                 </viewController>
@@ -215,16 +229,34 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="gpa-x8-qJ2" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="KjT-Fs-M6r">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
                         <segue destination="rJZ-vX-P9D" kind="relationship" relationship="viewControllers" id="dvA-Xc-kLW"/>
+                        <segue destination="xTy-ga-x7l" kind="relationship" relationship="viewControllers" id="sEt-ar-J2g"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RD1-B8-Eln" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-667.93893129770993" y="-24.647887323943664"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="udp-mG-A9b">
+            <objects>
+                <viewController id="xTy-ga-x7l" customClass="TicketListViewController" customModule="HadiBilet" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="lUe-JV-TK1">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="OXY-CR-A4n"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="EhV-jP-Dht"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VBD-WZ-r6M" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-668" y="804"/>
         </scene>
     </scenes>
     <resources>

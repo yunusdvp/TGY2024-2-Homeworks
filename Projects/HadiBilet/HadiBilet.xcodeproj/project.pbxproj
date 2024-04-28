@@ -13,6 +13,7 @@
 		464A44BD2BD63CE4005214CB /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 464A44BC2BD63CE4005214CB /* Base */; };
 		464A44BF2BD63CE6005214CB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 464A44BE2BD63CE6005214CB /* Assets.xcassets */; };
 		464A44C22BD63CE6005214CB /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 464A44C12BD63CE6005214CB /* Base */; };
+		46522E492BDED8090071E333 /* TicketListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46522E482BDED8090071E333 /* TicketListViewController.swift */; };
 		466A59032BD6911C001251F1 /* FirebaseHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466A59022BD6911C001251F1 /* FirebaseHelpers.swift */; };
 		466A59052BD69386001251F1 /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466A59042BD69386001251F1 /* City.swift */; };
 		466A59072BD693B7001251F1 /* Journey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466A59062BD693B7001251F1 /* Journey.swift */; };
@@ -31,6 +32,8 @@
 		466A59292BDBED8B001251F1 /* SeatCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 466A59282BDBED8A001251F1 /* SeatCell.xib */; };
 		466A592B2BDBEDA9001251F1 /* SeatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466A592A2BDBEDA9001251F1 /* SeatCell.swift */; };
 		466A592D2BDCFCBE001251F1 /* BusTicketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466A592C2BDCFCBE001251F1 /* BusTicketViewController.swift */; };
+		466A59312BDE5EDD001251F1 /* PassengerInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466A59302BDE5EDD001251F1 /* PassengerInfoView.swift */; };
+		466A59332BDE5F09001251F1 /* PassengerInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 466A59322BDE5F09001251F1 /* PassengerInfoView.xib */; };
 		46D1B36F2BD640DE00C5E154 /* Passenger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D1B36E2BD640DE00C5E154 /* Passenger.swift */; };
 		46D1B3712BD640F300C5E154 /* Ticket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D1B3702BD640F300C5E154 /* Ticket.swift */; };
 		46D1B3732BD6411D00C5E154 /* DateStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D1B3722BD6411D00C5E154 /* DateStruct.swift */; };
@@ -63,6 +66,7 @@
 		464A44BE2BD63CE6005214CB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		464A44C12BD63CE6005214CB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		464A44C32BD63CE6005214CB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		46522E482BDED8090071E333 /* TicketListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketListViewController.swift; sourceTree = "<group>"; };
 		466A59022BD6911C001251F1 /* FirebaseHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseHelpers.swift; sourceTree = "<group>"; };
 		466A59042BD69386001251F1 /* City.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
 		466A59062BD693B7001251F1 /* Journey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Journey.swift; sourceTree = "<group>"; };
@@ -81,6 +85,8 @@
 		466A59282BDBED8A001251F1 /* SeatCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SeatCell.xib; sourceTree = "<group>"; };
 		466A592A2BDBEDA9001251F1 /* SeatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeatCell.swift; sourceTree = "<group>"; };
 		466A592C2BDCFCBE001251F1 /* BusTicketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusTicketViewController.swift; sourceTree = "<group>"; };
+		466A59302BDE5EDD001251F1 /* PassengerInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassengerInfoView.swift; sourceTree = "<group>"; };
+		466A59322BDE5F09001251F1 /* PassengerInfoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PassengerInfoView.xib; sourceTree = "<group>"; };
 		46D1B36E2BD640DE00C5E154 /* Passenger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Passenger.swift; sourceTree = "<group>"; };
 		46D1B3702BD640F300C5E154 /* Ticket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ticket.swift; sourceTree = "<group>"; };
 		46D1B3722BD6411D00C5E154 /* DateStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateStruct.swift; sourceTree = "<group>"; };
@@ -177,6 +183,8 @@
 				466A59262BDBE6B5001251F1 /* BusView.swift */,
 				466A59282BDBED8A001251F1 /* SeatCell.xib */,
 				466A592A2BDBEDA9001251F1 /* SeatCell.swift */,
+				466A59302BDE5EDD001251F1 /* PassengerInfoView.swift */,
+				466A59322BDE5F09001251F1 /* PassengerInfoView.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -187,6 +195,7 @@
 				464A44B92BD63CE4005214CB /* ViewController.swift */,
 				466A591C2BDA7623001251F1 /* EntryViewController.swift */,
 				466A592C2BDCFCBE001251F1 /* BusTicketViewController.swift */,
+				46522E482BDED8090071E333 /* TicketListViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -302,6 +311,7 @@
 				464A44C22BD63CE6005214CB /* Base in Resources */,
 				466A59292BDBED8B001251F1 /* SeatCell.xib in Resources */,
 				466A591F2BDA78A5001251F1 /* TravelSearchView.xib in Resources */,
+				466A59332BDE5F09001251F1 /* PassengerInfoView.xib in Resources */,
 				464A44BD2BD63CE4005214CB /* Base in Resources */,
 				466A59212BDA890C001251F1 /* CityFieldView.xib in Resources */,
 			);
@@ -316,6 +326,7 @@
 			files = (
 				464A44BA2BD63CE4005214CB /* ViewController.swift in Sources */,
 				466A59032BD6911C001251F1 /* FirebaseHelpers.swift in Sources */,
+				46522E492BDED8090071E333 /* TicketListViewController.swift in Sources */,
 				466A590D2BD7A190001251F1 /* TravelSearchView.swift in Sources */,
 				466A59072BD693B7001251F1 /* Journey.swift in Sources */,
 				466A59152BD7F9EB001251F1 /* JourneyCell.swift in Sources */,
@@ -327,6 +338,7 @@
 				46D1B3752BD6452E00C5E154 /* Time.swift in Sources */,
 				464A44B62BD63CE4005214CB /* AppDelegate.swift in Sources */,
 				466A59232BDA8931001251F1 /* CityFieldView.swift in Sources */,
+				466A59312BDE5EDD001251F1 /* PassengerInfoView.swift in Sources */,
 				466A59052BD69386001251F1 /* City.swift in Sources */,
 				46D1B3712BD640F300C5E154 /* Ticket.swift in Sources */,
 				466A59272BDBE6B5001251F1 /* BusView.swift in Sources */,
