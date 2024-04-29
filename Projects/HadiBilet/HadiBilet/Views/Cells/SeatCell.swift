@@ -21,7 +21,6 @@ class SeatCell: UICollectionViewCell {
     }
     override init(frame: CGRect) {
            super.init(frame: frame)
-           //setupBackgroundImageView()
        }
        
     required init?(coder: NSCoder) {
@@ -30,18 +29,13 @@ class SeatCell: UICollectionViewCell {
        }
        
     private func setupBackgroundImageView() {
-            // ImageView'i oluştur ve ayarla
             let imageView = UIImageView(frame: containerView.bounds)
             imageView.image = UIImage(named: "BusSeatIcon")
-            imageView.contentMode = .scaleAspectFill // Resmin boyutunu düzgün ayarla
+            imageView.contentMode = .scaleAspectFill
             imageView.clipsToBounds = true
             containerView.insertSubview(imageView, at: 0)
             backgroundImageView = imageView
-            
-            // Autoresizing kullanarak imageView'ın boyutlarını containerView'a sığdır
             imageView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-            
-            // containerView için varsayılan arka plan rengini ayarla
             containerView.backgroundColor = .gray
         }
         
@@ -54,8 +48,6 @@ class SeatCell: UICollectionViewCell {
             }
             containerView.bringSubviewToFront(seatNoLabel)
             seatNoLabel.text = "\(model.no)"
-            
-            //seatNoLabel.textColor = .white // Etiketin okunabilirliğini artır
             if model.isEmpty {
                 containerView.backgroundColor = .lightGray
             } else {

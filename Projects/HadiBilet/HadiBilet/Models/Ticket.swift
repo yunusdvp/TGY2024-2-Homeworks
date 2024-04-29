@@ -6,12 +6,10 @@
 //
 
 import Foundation
+
 struct Ticket{
     var passenger: Passenger?
     var date: DateStruct?
     var time: Time?
     var seat: Seat?
-    
-    
-    
 }

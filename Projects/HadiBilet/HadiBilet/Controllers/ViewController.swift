@@ -10,15 +10,18 @@ import Foundation
 import Firebase
 class ViewController: UIViewController {
     @IBOutlet weak var JourneysTableView: UITableView!
+    
+    let emptyLabel = UILabel()
     let firebaseHelpers = FirebaseHelpers()
     var nereden : String?
     var nereye : String?
     var day: Int?
     var month: Int?
-
     var journeys = [Journey]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupEmptyLabel()
         JourneysTableView.dataSource = self
         JourneysTableView.delegate = self
         JourneysTableView.register(UINib(nibName: JourneyCell.identifier, bundle: nil), forCellReuseIdentifier: JourneyCell.identifier)
@@ -27,35 +30,51 @@ class ViewController: UIViewController {
             DispatchQueue.main.async {
                 print(journeys)
                 self.updateUI(with: journeys)
-                
             }
         }
-        /*DispatchQueue.main.async {
-            self.firebaseHelpers.fetchFilteredJourneys(fromCity: "Mersin", toCity: "Adana", departureDay: 3, departureMonth: 5) { [weak self] journeys in
-                DispatchQueue.main.async {
-                    print(journeys)
+    }
+    func checkEmptyState() {
+        emptyLabel.isHidden = !journeys.isEmpty
+    }
+    func setupEmptyLabel() {
+            emptyLabel.text = "Üzgünüz, belirttiğiniz kriterlerde sefer bulunamamıştır."
+            emptyLabel.textColor = .gray
+            emptyLabel.textAlignment = .center
+            emptyLabel.numberOfLines = 0
+            emptyLabel.isHidden = true
+            JourneysTableView.addSubview(emptyLabel)
+            emptyLabel.translatesAutoresizingMaskIntoConstraints = false
+            NSLayoutConstraint.activate([
+                emptyLabel.centerXAnchor.constraint(equalTo: JourneysTableView.centerXAnchor),
+                emptyLabel.centerYAnchor.constraint(equalTo: JourneysTableView.centerYAnchor),
+                emptyLabel.widthAnchor.constraint(equalTo: JourneysTableView.widthAnchor, multiplier: 0.8)
+            ])
+        }
+    func updateUI(with journeys: [Journey]) {
+        let now = Date()
+        let calender = Calendar.current
+        self.journeys = journeys.filter { journey in
+                let journeyDate = dateFrom(dateStruct: journey.departureDate)
+                return journeyDate >= now
+            }.sorted {
+                if $0.departureDate.hour != $1.departureDate.hour {
+                    return $0.departureDate.hour < $1.departureDate.hour
+                } else {
+                    return $0.departureDate.minute < $1.departureDate.minute
                 }
             }
-         
-         }*/
-        
-        
-        
-        
-        // Firebase projeniz için konfigürasyonu yapılandırın
-        //FirebaseApp.configure()
-        /*let newPassenger = Passenger(id: "123456",name:"Yunus Emre",surname: "Doe")
-         firebaseHelpers.addPassengerToFirestore(passenger: newPassenger)        // Firestore referansını alın
-         //addPassengerToFirestore(passenger: newPassenger)*/
-        //FirebaseApp.configure()
-        
-        
-        
+        self.JourneysTableView.reloadData()
+        checkEmptyState()
     }
-    func updateUI(with journeys: [Journey]) {
-        // Burada collectionView ya da tableView'ınızı güncelleyebilirsiniz
-        self.journeys = journeys
-        self.JourneysTableView.reloadData()  // Veya self.collectionView.reloadData()
+    func dateFrom(dateStruct: DateStruct) -> Date {
+        var components = DateComponents()
+        components.year = dateStruct.year
+        components.month = dateStruct.month
+        components.day = dateStruct.day
+        components.hour = dateStruct.hour
+        components.minute = dateStruct.minute
+        let calendar = Calendar.current
+        return calendar.date(from: components) ?? Date()
     }
     
 }
@@ -84,13 +103,4 @@ extension ViewController: UITableViewDelegate,UITableViewDataSource{
                 }
             }
         }
-
-   
-
-    
-    
 }
-
-    
-
-

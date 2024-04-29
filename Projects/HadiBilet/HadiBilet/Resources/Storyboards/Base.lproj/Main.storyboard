@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="gpa-x8-qJ2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="rJZ-vX-P9D">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
@@ -13,32 +13,38 @@
         <scene sceneID="X1x-6I-iCg">
             <objects>
                 <viewController id="A22-Cv-NMU" customClass="EntryViewController" customModule="HadiBilet" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="WB6-FS-bJy">
+                    <view key="view" contentMode="scaleAspectFit" id="WB6-FS-bJy">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="dL9-Lx-21z">
-                                <rect key="frame" x="10" y="203" width="373" height="491"/>
+                            <stackView opaque="NO" contentMode="scaleAspectFit" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="dL9-Lx-21z">
+                                <rect key="frame" x="10" y="203" width="373" height="540"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BUh-xJ-93U">
-                                        <rect key="frame" x="0.0" y="0.0" width="373" height="260"/>
+                                    <stackView opaque="NO" contentMode="scaleAspectFit" axis="vertical" distribution="fillEqually" spacing="8" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BUh-xJ-93U">
+                                        <rect key="frame" x="0.0" y="0.0" width="373" height="108"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nuI-nF-KAA" customClass="CityFieldView" customModule="HadiBilet" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="373" height="126"/>
+                                            <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="nuI-nF-KAA" customClass="CityFieldView" customModule="HadiBilet" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="373" height="50"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rhB-aj-lip" customClass="CityFieldView" customModule="HadiBilet" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="134" width="373" height="126"/>
+                                            <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="rhB-aj-lip" customClass="CityFieldView" customModule="HadiBilet" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="58" width="373" height="50"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                             </view>
                                         </subviews>
+                                        <constraints>
+                                            <constraint firstItem="rhB-aj-lip" firstAttribute="leading" secondItem="BUh-xJ-93U" secondAttribute="leading" id="Icc-2i-Flc"/>
+                                            <constraint firstItem="nuI-nF-KAA" firstAttribute="leading" secondItem="BUh-xJ-93U" secondAttribute="leading" id="YO0-Fk-dSc"/>
+                                            <constraint firstAttribute="trailing" secondItem="rhB-aj-lip" secondAttribute="trailing" id="e8V-HF-T33"/>
+                                            <constraint firstAttribute="trailing" secondItem="nuI-nF-KAA" secondAttribute="trailing" id="xhI-7Y-cKk"/>
+                                        </constraints>
                                     </stackView>
                                     <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="uUR-Ae-ECI">
-                                        <rect key="frame" x="0.0" y="260" width="373" height="50"/>
+                                        <rect key="frame" x="0.0" y="108" width="373" height="50"/>
                                         <locale key="locale" localeIdentifier="tr_TR"/>
                                     </datePicker>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dhq-1P-uZe">
-                                        <rect key="frame" x="0.0" y="310" width="373" height="181"/>
+                                        <rect key="frame" x="0.0" y="158" width="373" height="382"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" image="arrow.forward" catalog="system" title="Bilet Bul ">
                                             <fontDescription key="titleFontDescription" name="Avenir-BookOblique" family="Avenir" pointSize="18"/>
@@ -48,6 +54,10 @@
                                         </connections>
                                     </button>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstItem="BUh-xJ-93U" firstAttribute="leading" secondItem="dL9-Lx-21z" secondAttribute="leading" id="4Ez-eG-xnx"/>
+                                    <constraint firstAttribute="trailing" secondItem="BUh-xJ-93U" secondAttribute="trailing" id="gCE-qC-MgE"/>
+                                </constraints>
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ru5-7k-jXM"/>
@@ -80,7 +90,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="HrI-Gt-op2">
-                                <rect key="frame" x="0.0" y="103" width="393" height="666"/>
+                                <rect key="frame" x="0.0" y="103" width="393" height="715"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <tableView key="tableFooterView" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="LyM-uo-Xou">
                                     <rect key="frame" x="0.0" y="0.0" width="393" height="470"/>
@@ -119,29 +129,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="W9j-mE-pVu" customClass="PassengerInfoView" customModule="HadiBilet" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="411" width="393" height="289"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            </view>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y93-qN-ZWz">
-                                <rect key="frame" x="0.0" y="708" width="393" height="97"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Satın Al"/>
-                                <connections>
-                                    <action selector="BuyTicketButton:" destination="Szt-TV-KMc" eventType="touchUpInside" id="Rlt-Qw-JI8"/>
-                                </connections>
-                            </button>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceHorizontal="YES" pagingEnabled="YES" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bGM-2D-1u5">
-                                <rect key="frame" x="16" y="103" width="349" height="308"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="qmv-Ic-Yeq">
+                                <rect key="frame" x="0.0" y="103" width="393" height="739"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BusFront" translatesAutoresizingMaskIntoConstraints="NO" id="Bcv-Sj-237">
-                                        <rect key="frame" x="-14" y="0.0" width="106" height="308"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="106" id="wC4-AA-nDy"/>
-                                        </constraints>
-                                    </imageView>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="tgJ-VN-yP7">
-                                        <rect key="frame" x="100" y="8" width="449" height="292"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="239.66666666666666"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="wm6-yo-6ns">
                                             <size key="itemSize" width="128" height="128"/>
@@ -151,7 +143,7 @@
                                         </collectionViewFlowLayout>
                                         <cells>
                                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="SeatCell" id="YiB-fa-fpU" customClass="SeatCell" customModule="HadiBilet" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                                <rect key="frame" x="0.0" y="56" width="128" height="128"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="SpH-ef-F6x">
                                                     <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
@@ -160,47 +152,34 @@
                                             </collectionViewCell>
                                         </cells>
                                     </collectionView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W9j-mE-pVu" customClass="PassengerInfoView" customModule="HadiBilet" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="249.66666666666669" width="393" height="239.66666666666669"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y93-qN-ZWz">
+                                        <rect key="frame" x="0.0" y="499.33333333333343" width="393" height="239.66666666666669"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Satın Al"/>
+                                        <connections>
+                                            <action selector="BuyTicketButton:" destination="Szt-TV-KMc" eventType="touchUpInside" id="Rlt-Qw-JI8"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
-                                <constraints>
-                                    <constraint firstItem="Bcv-Sj-237" firstAttribute="centerY" secondItem="tgJ-VN-yP7" secondAttribute="centerY" id="2Gw-HC-RqA"/>
-                                    <constraint firstAttribute="trailing" secondItem="tgJ-VN-yP7" secondAttribute="trailing" priority="500" id="4cK-Rd-IvU"/>
-                                    <constraint firstItem="Bcv-Sj-237" firstAttribute="leading" secondItem="bGM-2D-1u5" secondAttribute="leading" constant="-14" id="5uU-N4-L34"/>
-                                    <constraint firstAttribute="bottom" secondItem="Bcv-Sj-237" secondAttribute="bottom" id="67P-zA-PYb"/>
-                                    <constraint firstItem="tgJ-VN-yP7" firstAttribute="trailing" secondItem="eLg-Yw-p40" secondAttribute="trailing" constant="200" id="FIC-14-sV4"/>
-                                    <constraint firstItem="Bcv-Sj-237" firstAttribute="bottom" secondItem="eLg-Yw-p40" secondAttribute="bottom" id="GQm-jS-qDK"/>
-                                    <constraint firstItem="tgJ-VN-yP7" firstAttribute="leading" secondItem="Bcv-Sj-237" secondAttribute="trailing" constant="8" symbolic="YES" id="IRX-d1-hsV"/>
-                                    <constraint firstItem="Bcv-Sj-237" firstAttribute="top" secondItem="dl7-5C-jKC" secondAttribute="top" id="LuX-Qr-iTX"/>
-                                    <constraint firstItem="tgJ-VN-yP7" firstAttribute="top" secondItem="bGM-2D-1u5" secondAttribute="topMargin" id="vYg-op-dXS"/>
-                                </constraints>
-                                <viewLayoutGuide key="contentLayoutGuide" id="dl7-5C-jKC"/>
-                                <viewLayoutGuide key="frameLayoutGuide" id="eLg-Yw-p40"/>
-                            </scrollView>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="0vw-3c-7C7"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="0vw-3c-7C7" firstAttribute="trailing" secondItem="bGM-2D-1u5" secondAttribute="trailing" constant="28" id="006-fz-N0J"/>
-                            <constraint firstItem="W9j-mE-pVu" firstAttribute="leading" secondItem="0vw-3c-7C7" secondAttribute="leading" id="Edh-hs-mwP"/>
-                            <constraint firstItem="W9j-mE-pVu" firstAttribute="top" secondItem="bGM-2D-1u5" secondAttribute="bottom" id="FSB-G8-dsP"/>
-                            <constraint firstItem="W9j-mE-pVu" firstAttribute="trailing" secondItem="0vw-3c-7C7" secondAttribute="trailing" id="HyU-lf-gV9"/>
-                            <constraint firstItem="W9j-mE-pVu" firstAttribute="trailing" secondItem="0vw-3c-7C7" secondAttribute="trailing" id="Mbw-ej-q7b"/>
-                            <constraint firstItem="W9j-mE-pVu" firstAttribute="top" secondItem="bGM-2D-1u5" secondAttribute="bottom" id="RAU-6n-1nQ"/>
-                            <constraint firstAttribute="bottom" secondItem="bGM-2D-1u5" secondAttribute="bottom" constant="441" id="UHn-Nd-13A"/>
-                            <constraint firstItem="Y93-qN-ZWz" firstAttribute="leading" secondItem="W9j-mE-pVu" secondAttribute="leading" id="Zis-TD-fP5"/>
-                            <constraint firstItem="W9j-mE-pVu" firstAttribute="bottom" secondItem="Y93-qN-ZWz" secondAttribute="bottom" id="Zxo-4n-msJ"/>
-                            <constraint firstItem="bGM-2D-1u5" firstAttribute="top" secondItem="0vw-3c-7C7" secondAttribute="top" id="gQN-iB-ggv"/>
-                            <constraint firstItem="bGM-2D-1u5" firstAttribute="leading" secondItem="2ay-Rj-Fwr" secondAttribute="leadingMargin" id="jlL-3G-rpc"/>
-                            <constraint firstItem="W9j-mE-pVu" firstAttribute="leading" secondItem="0vw-3c-7C7" secondAttribute="leading" id="r3g-iB-cqH"/>
-                            <constraint firstItem="W9j-mE-pVu" firstAttribute="bottom" secondItem="0vw-3c-7C7" secondAttribute="bottom" id="uf5-hM-pWW"/>
-                            <constraint firstItem="Y93-qN-ZWz" firstAttribute="trailing" secondItem="W9j-mE-pVu" secondAttribute="trailing" id="zS5-dj-dSt"/>
+                            <constraint firstItem="qmv-Ic-Yeq" firstAttribute="top" secondItem="0vw-3c-7C7" secondAttribute="top" id="4vq-8s-qrH"/>
+                            <constraint firstItem="qmv-Ic-Yeq" firstAttribute="leading" secondItem="0vw-3c-7C7" secondAttribute="leading" id="5HE-J8-KMD"/>
+                            <constraint firstAttribute="bottom" secondItem="qmv-Ic-Yeq" secondAttribute="bottom" constant="10" id="8ep-7J-b90"/>
+                            <constraint firstItem="qmv-Ic-Yeq" firstAttribute="trailing" secondItem="0vw-3c-7C7" secondAttribute="trailing" id="rCD-Ut-zOM"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="4rg-DH-5fD"/>
                     <connections>
-                        <outlet property="busFrontImage" destination="Bcv-Sj-237" id="B83-41-1Te"/>
                         <outlet property="busSeatCollectionView" destination="tgJ-VN-yP7" id="v6y-oo-Wly"/>
                         <outlet property="passengeerInfoView" destination="W9j-mE-pVu" id="Oia-zH-VpK"/>
-                        <outlet property="scrollView" destination="bGM-2D-1u5" id="Q8H-mx-0EE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U6n-de-V6t" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -226,25 +205,6 @@
             </objects>
             <point key="canvasLocation" x="258.77862595419845" y="-24.647887323943664"/>
         </scene>
-        <!--Tab Bar Controller-->
-        <scene sceneID="tzP-lT-ivd">
-            <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="gpa-x8-qJ2" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="KjT-Fs-M6r">
-                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </tabBar>
-                    <connections>
-                        <segue destination="rJZ-vX-P9D" kind="relationship" relationship="viewControllers" id="dvA-Xc-kLW"/>
-                        <segue destination="xTy-ga-x7l" kind="relationship" relationship="viewControllers" id="sEt-ar-J2g"/>
-                    </connections>
-                </tabBarController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="RD1-B8-Eln" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-667.93893129770993" y="-24.647887323943664"/>
-        </scene>
         <!--Item-->
         <scene sceneID="udp-mG-A9b">
             <objects>
@@ -252,56 +212,17 @@
                     <view key="view" contentMode="scaleToFill" id="lUe-JV-TK1">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="9OL-g1-Qxl">
-                                <rect key="frame" x="16" y="140" width="361" height="421"/>
-                                <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="dWe-Fn-8V2">
-                                        <rect key="frame" x="0.0" y="0.0" width="361" height="128"/>
-                                        <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gpn-B1-PoZ" customClass="CityFieldView" customModule="HadiBilet" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="175.66666666666666" height="128"/>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                            </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GZV-qk-xfW" customClass="CityFieldView" customModule="HadiBilet" customModuleProvider="target">
-                                                <rect key="frame" x="185.66666666666663" y="0.0" width="175.33333333333337" height="128"/>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                            </view>
-                                        </subviews>
-                                    </stackView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hJI-2d-Adm">
-                                        <rect key="frame" x="0.0" y="128" width="361" height="293"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Button"/>
-                                        <connections>
-                                            <action selector="buttonTapped:" destination="xTy-ga-x7l" eventType="touchUpInside" id="QC1-kG-b6d"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                            </stackView>
-                        </subviews>
                         <viewLayoutGuide key="safeArea" id="OXY-CR-A4n"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="9OL-g1-Qxl" firstAttribute="top" secondItem="OXY-CR-A4n" secondAttribute="top" constant="81" id="UX6-Kj-hTP"/>
-                            <constraint firstItem="9OL-g1-Qxl" firstAttribute="leading" secondItem="OXY-CR-A4n" secondAttribute="leading" constant="16" id="bEw-Ij-eZf"/>
-                            <constraint firstItem="OXY-CR-A4n" firstAttribute="bottom" secondItem="9OL-g1-Qxl" secondAttribute="bottom" constant="208" id="gwm-K3-FJB"/>
-                            <constraint firstItem="OXY-CR-A4n" firstAttribute="trailing" secondItem="9OL-g1-Qxl" secondAttribute="trailing" constant="16" id="iph-Em-kjl"/>
-                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="EhV-jP-Dht"/>
-                    <connections>
-                        <outlet property="neredenView" destination="gpn-B1-PoZ" id="jYh-FB-Sc6"/>
-                        <outlet property="nereyeView" destination="GZV-qk-xfW" id="svd-EQ-n3e"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VBD-WZ-r6M" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-669.46564885496184" y="803.52112676056345"/>
+            <point key="canvasLocation" x="3811" y="-16"/>
         </scene>
     </scenes>
     <resources>
-        <image name="BusFront" width="350" height="717"/>
         <image name="arrow.forward" catalog="system" width="128" height="95"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

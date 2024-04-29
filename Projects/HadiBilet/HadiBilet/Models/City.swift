@@ -6,6 +6,7 @@
 //
 
 import Foundation
+
 struct City{
     var cityName : String
 }

@@ -11,45 +11,37 @@ class BusTicketViewController: UIViewController {
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var journey :Journey?
     @IBOutlet weak var passengeerInfoView: PassengerInfoView!
-    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var busSeatCollectionView: UICollectionView!
-    @IBOutlet weak var busFrontImage: UIImageView!
     
     let firebaseHelpers = FirebaseHelpers()
     override func viewDidLoad() {
         super.viewDidLoad()
+        addDismissKeyboardTapGesture()
+        addKeyboardObservers()
         print(journey)
         configureCollectionView()
-        //let passenger = Passenger(id: "p123", name: "Yunus", surname: "Özşahin")
-        
-        /*let updatedSeat = Seat(no: 1, isEmpty: false, passengerGender: true, passenger: passenger)
-         firebaseHelpers.updateSeatInJourney(journeyId: "03KNCTMnXdPFBFPPysCf", updatedSeat: updatedSeat) { success in
-         if success {
-         print("Seat updated successfully")
-         } else {
-         print("Failed to update seat")
-         }
-         }*/
-        
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        removeKeyboardObservers()
     }
     private func configureCollectionView(){
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         layout.minimumInteritemSpacing = 5
-        
         layout.minimumLineSpacing = 5
         layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        layout.headerReferenceSize = CGSize(width: 50, height: busSeatCollectionView.bounds.height)
         busSeatCollectionView.setCollectionViewLayout(layout, animated: true)
         busSeatCollectionView.delegate = self
         busSeatCollectionView.dataSource = self
         busSeatCollectionView.register(UINib(nibName: "SeatCell", bundle: nil), forCellWithReuseIdentifier: SeatCell.identifier)
+        busSeatCollectionView.register(CollectionHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: CollectionHeader.identifier)
         busSeatCollectionView.allowsMultipleSelection = true
         
     }
-    private func showAlert(message: String) {
-        let alert = UIAlertController(title: "Bilgi Eksik", message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Tamam", style: .default, handler: nil))
-        self.present(alert, animated: true)
+    private func showAlert(title: String, message: String) {
+        AlertManager.shared.showAlert(title: title, message: message, on: self)
     }
     
     func arePassengerDetailsFilled() -> Bool {
@@ -61,15 +53,13 @@ class BusTicketViewController: UIViewController {
     private func showTicketDetails() {
             guard let journey = self.journey else { return }
             guard let selectedSeats = busSeatCollectionView.indexPathsForSelectedItems, !selectedSeats.isEmpty else { return }
-            
             let seatNumbers = selectedSeats.map { "\($0.row + 1)" }.joined(separator: ", ")
             let formattedDate = formatDateString(journey.departureDate)
-        let journeyDetails = "\(journey.fromCity.cityName) - \(journey.toCity.cityName) - \(formattedDate), \(journey.travelDuration) saat"
-            let ticketInfo = "Journey: \(journeyDetails)\nSeats: \(seatNumbers)"
+            let journeyDetails = "Seyehat Firması: \(journey.journeyCompany.companyName)\n Rota: \(journey.fromCity.cityName) - \(journey.toCity.cityName) \nTarih \(formattedDate),\n Yolculuk süresi(Tahmini): \(journey.travelDuration) saat"
+            let ticketInfo = "\(journeyDetails)\nKoltuk: \(seatNumbers)"
             
-            let alert = UIAlertController(title: "Bilet Detayınız", message: ticketInfo, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-            self.present(alert, animated: true)
+            let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+            AlertManager.shared.showAlert(title: "Bilet Detayınız", message: ticketInfo, on: self, actions: [okAction], style: .actionSheet)
         }
         
         private func formatDateString(_ date: DateStruct) -> String {
@@ -81,16 +71,16 @@ class BusTicketViewController: UIViewController {
                 dateFormatter.timeStyle = .short
                 return dateFormatter.string(from: date)
             }
-            return "\(date.day)-\(date.month)-\(date.year) at \(date.hour):\(String(format: "%02d", date.minute))"
+            return "\(date.day)-\(date.month)-\(date.year) saat \(date.hour):\(String(format: "%02d", date.minute))"
         }
     @IBAction func BuyTicketButton(_ sender: UIButton) {
         guard arePassengerDetailsFilled() else {
-            showAlert(message: "Lütfen önce yolcu bilgilerini doldurun.")
+            showAlert(title: "Uyarı",message: "Lütfen önce yolcu bilgilerini doldurun.")
             return
         }
         
         guard let selectedSeats = busSeatCollectionView.indexPathsForSelectedItems, !selectedSeats.isEmpty else {
-            showAlert(message: "Lütfen en az bir koltuk seçin.")
+            showAlert(title: "Uyarı", message: "Lütfen en az bir koltuk seçin.")
             return
         }
             var updatedSeats = [Seat]()
@@ -100,7 +90,6 @@ class BusTicketViewController: UIViewController {
                 guard var seat = self.journey?.seats[indexPath.row] else {
                     continue
                 }
-                
                 seat.isEmpty = false
                 seat.passengerGender = self.passengeerInfoView.passengerGenderControl.selectedSegmentIndex == 0
                 seat.passenger = Passenger(
@@ -111,8 +100,6 @@ class BusTicketViewController: UIViewController {
                 updatedSeats.append(seat)
                 selectedIndexes.append(indexPath.row)
             }
-            
-            // Güncelleme işlemini başlat
             self.firebaseHelpers.updateSelectedSeatsInJourney(journeyId: self.journey?.id ?? "", seats: updatedSeats, selectedIndexes: selectedIndexes) { success in
                 if success {
                     print("All selected seats updated successfully.")
@@ -121,8 +108,6 @@ class BusTicketViewController: UIViewController {
                     print("Failed to update selected seats")
                 }
             }
-        
-        
     }
     
 }
@@ -140,17 +125,16 @@ extension BusTicketViewController: UICollectionViewDelegate,UICollectionViewData
             print(seat)
             cell.configure(with: seat)
         }
-        
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
         if let seat = journey?.seats[indexPath.row], seat.isEmpty == false {
-            showAlert(message: "Bu koltuk doludur. Boş koltukları seçebilirsiniz.")
+            showAlert(title: "Uyarı", message: "Bu koltuk doludur. Boş koltukları seçebilirsiniz.")
             return false
         }
         
         if collectionView.indexPathsForSelectedItems?.count == 5 {
-            showAlert(message: "En fazla 5 koltuk seçebilirsiniz.")
+            showAlert(title: "Uyarı", message: "En fazla 5 koltuk seçebilirsiniz.")
             return false
         }
         
@@ -159,27 +143,23 @@ extension BusTicketViewController: UICollectionViewDelegate,UICollectionViewData
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
             if let cell = collectionView.cellForItem(at: indexPath) as? SeatCell,
                let seat = journey?.seats[indexPath.row], arePassengerDetailsFilled() {
-                
                 let genderIndex = passengeerInfoView.passengerGenderControl.selectedSegmentIndex
                 let backgroundColor: UIColor = (genderIndex == 0) ? .blue : .red
                 cell.containerView.backgroundColor = backgroundColor
                 print("Seçilen koltuk: \(indexPath.row + 1)")
             } else {
                 collectionView.deselectItem(at: indexPath, animated: true)
-                showAlert(message: "Lütfen önce yolcu bilgilerini doldurun.")
+                showAlert(title: "Uyarı", message: "Lütfen önce yolcu bilgilerini doldurun.")
             }
         }
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         if let cell = collectionView.cellForItem(at: indexPath) as? SeatCell {
             cell.containerView.backgroundColor = .lightGray
-            
-            // Modeli doğrudan güncelle
             if journey?.seats.indices.contains(indexPath.row) == true {
                 journey?.seats[indexPath.row].isEmpty = true
                 journey?.seats[indexPath.row].passengerGender = nil
                 journey?.seats[indexPath.row].passenger = nil
             }
-            
             print("Seçimi kaldırılan koltuk: \(indexPath.row + 1)")
         }
     }
@@ -188,9 +168,16 @@ extension BusTicketViewController: UICollectionViewDelegate,UICollectionViewData
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         var itemHeight = collectionView.bounds.height/4
         var itemWidth =  itemHeight
-        
-        
         return CGSize(width: itemWidth, height: itemHeight)
         
+    }
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        guard kind == UICollectionView.elementKindSectionHeader else {
+                return UICollectionReusableView()
+            }
+
+            let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: CollectionHeader.identifier, for: indexPath) as! CollectionHeader
+            header.configure(with: UIImage(named: "BusFront")!)
+            return header
     }
 }

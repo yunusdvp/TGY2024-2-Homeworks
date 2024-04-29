@@ -11,7 +11,7 @@ protocol CityFieldViewDelegate: AnyObject {
     func cityDidSelect(_ cityFieldView: CityFieldView, selectedCity: String)
 }
 
-class CityFieldView: UIView,UIPickerViewDelegate,UIPickerViewDataSource {
+class CityFieldView: UIView{
 
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var containerView: UIView!
@@ -50,7 +50,6 @@ class CityFieldView: UIView,UIPickerViewDelegate,UIPickerViewDataSource {
             let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(dismissPicker))
             toolBar.setItems([doneButton], animated: false)
             textField.inputAccessoryView = toolBar
-            
            } else {
                print("cityTextField is not connected in the XIB/Storyboard")
            }
@@ -58,25 +57,7 @@ class CityFieldView: UIView,UIPickerViewDelegate,UIPickerViewDataSource {
     func setupPicker(cities: [String]){
         self.cities = cities
     }
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return cities.count
-    }
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return cities[row]
-    }
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        cityTextField.text = cities[row]
-        delegate?.cityDidSelect(self, selectedCity: cities[row])
-        
-    }
-    @objc func dismissPicker(){
-        headerLabel.text = cityTextField.placeholder
-        self.endEditing(true)
-    }
-    
+
     private func loadViewFromNib() -> UIView! {
         let bundle = Bundle(for: type(of: self))
         let name = NSStringFromClass(self.classForCoder).components(separatedBy: ".").last!
@@ -96,15 +77,33 @@ class CityFieldView: UIView,UIPickerViewDelegate,UIPickerViewDataSource {
         containerView = view
         bounds = nibView.frame
         addSubview(nibView)
-        
-        
     }
-
+    
     func setup(model: City){
         self.configureView()
         cityTextField.text = model.cityName
-        
+    }
+}
+extension CityFieldView: UIPickerViewDelegate,UIPickerViewDataSource{
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        cityTextField.text = cities[row]
+        delegate?.cityDidSelect(self, selectedCity: cities[row])
+    }
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return cities.count
+    }
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return cities[row]
+    }
+
+    @objc func dismissPicker(){
+        self.endEditing(true)
     }
     
-
+    
+    
 }

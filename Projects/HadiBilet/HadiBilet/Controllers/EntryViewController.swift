@@ -8,15 +8,16 @@ class EntryViewController: UIViewController{
     @IBOutlet weak var nereyeView: CityFieldView!
     let cities = ["Mersin","Adana","İstanbul","Ankara"]
     override func viewDidLoad() {
+        super.viewDidLoad()
         neredenView.delegate = self
         nereyeView.delegate = self
-        super.viewDidLoad()
-        nereyeView.cityTextField.placeholder = "Nereye"
         neredenView.setupPicker(cities: cities)
         nereyeView.setupPicker(cities: cities)
+        nereyeView.headerLabel.text = "Nereye"
         datePicker.minimumDate = Date()
-
+        addDismissKeyboardTapGesture()
     }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "goToSecondViewController" {
             if let destinationVC = segue.destination as? ViewController {
@@ -32,12 +33,11 @@ class EntryViewController: UIViewController{
             }
         }
     }
+    
     func showAlert(message: String) {
-        let alert = UIAlertController(title: "Hata", message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Tamam", style: .default))
-        present(alert, animated: true)
+        let okAction = UIAlertAction(title: "Tamam", style: .default, handler: nil)
+        AlertManager.shared.showAlert(title: "Hata", message: message, on: self, actions: [okAction])
     }
-
     
     @IBAction func searchButton(_ sender: UIButton) {
         guard let nereden = neredenView.cityTextField.text, !nereden.isEmpty,
@@ -45,10 +45,10 @@ class EntryViewController: UIViewController{
                 showAlert(message: "Lütfen şehir seçimini yapın.")
                 return
             }
-            
             performSegue(withIdentifier: "goToSecondViewController", sender: self)
     }
 }
+
 extension EntryViewController: CityFieldViewDelegate{
     func cityDidSelect(_ cityFieldView: CityFieldView, selectedCity: String) {
         if cityFieldView == neredenView {

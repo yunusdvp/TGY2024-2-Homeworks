@@ -6,28 +6,21 @@
 //
 
 import Foundation
-
-
 import Firebase
 
 class FirebaseHelpers {
     let db = Firestore.firestore()
     
     static func getUserDataFromFirebase(completion: @escaping (User?, Error?) -> Void) {
-        
         let currentUser = Auth.auth().currentUser
-        
-        // Kullanıcı verilerini döndürme
         if let user = currentUser {
-            
             completion(user, nil)
         } else {
-            
             completion(nil, NSError(domain: "YourAppDomain", code: 404, userInfo: ["message": "User not found"]))
         }
     }
+    
     func addPassengerToFirestore(passenger: Passenger) {
-        
         let passengersCollection = db.collection("passengers")
         var newPassengerRef: DocumentReference? = nil
         newPassengerRef = passengersCollection.addDocument(data: [
@@ -42,6 +35,7 @@ class FirebaseHelpers {
             }
         }
     }
+    
     func fetchFilteredJourneys(fromCity: String, toCity: String, departureDay: Int, departureMonth: Int, completion: @escaping ([Journey]) -> Void) {
         let db = Firestore.firestore()
         let query = db.collection("journeys")
@@ -123,7 +117,6 @@ class FirebaseHelpers {
         }
         return arrivalDate
     }
-    
     func updateSelectedSeatsInJourney(journeyId: String, seats: [Seat], selectedIndexes: [Int], completion: @escaping (Bool) -> Void) {
         let db = Firestore.firestore()
         let journeyRef = db.collection("journeys").document(journeyId)

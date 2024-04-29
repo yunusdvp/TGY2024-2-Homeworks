@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		461044E12BDFA1400096CC90 /* KeyboardFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 461044E02BDFA1400096CC90 /* KeyboardFunction.swift */; };
+		461044E62BDFA8830096CC90 /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 461044E52BDFA8830096CC90 /* AlertManager.swift */; };
+		46494B642BDF95AD00584851 /* CollectionHeaderImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46494B632BDF95AD00584851 /* CollectionHeaderImage.swift */; };
 		464A44B62BD63CE4005214CB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464A44B52BD63CE4005214CB /* AppDelegate.swift */; };
 		464A44B82BD63CE4005214CB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464A44B72BD63CE4005214CB /* SceneDelegate.swift */; };
 		464A44BA2BD63CE4005214CB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464A44B92BD63CE4005214CB /* ViewController.swift */; };
@@ -19,17 +22,13 @@
 		466A59052BD69386001251F1 /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466A59042BD69386001251F1 /* City.swift */; };
 		466A59072BD693B7001251F1 /* Journey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466A59062BD693B7001251F1 /* Journey.swift */; };
 		466A59092BD694AB001251F1 /* BusCompany.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466A59082BD694AB001251F1 /* BusCompany.swift */; };
-		466A590D2BD7A190001251F1 /* TravelSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466A590C2BD7A190001251F1 /* TravelSearchView.swift */; };
 		466A590F2BD7A4D4001251F1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 466A590E2BD7A4D4001251F1 /* GoogleService-Info.plist */; };
 		466A59132BD7CCC7001251F1 /* createRandomData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466A59122BD7CCC7001251F1 /* createRandomData.swift */; };
 		466A59152BD7F9EB001251F1 /* JourneyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466A59142BD7F9EB001251F1 /* JourneyCell.swift */; };
 		466A59172BD7FAF6001251F1 /* JourneyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 466A59162BD7FAF6001251F1 /* JourneyCell.xib */; };
 		466A591D2BDA7623001251F1 /* EntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466A591C2BDA7623001251F1 /* EntryViewController.swift */; };
-		466A591F2BDA78A5001251F1 /* TravelSearchView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 466A591E2BDA78A5001251F1 /* TravelSearchView.xib */; };
 		466A59212BDA890C001251F1 /* CityFieldView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 466A59202BDA890C001251F1 /* CityFieldView.xib */; };
 		466A59232BDA8931001251F1 /* CityFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466A59222BDA8931001251F1 /* CityFieldView.swift */; };
-		466A59252BDBE6A5001251F1 /* BusView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 466A59242BDBE6A4001251F1 /* BusView.xib */; };
-		466A59272BDBE6B5001251F1 /* BusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466A59262BDBE6B5001251F1 /* BusView.swift */; };
 		466A59292BDBED8B001251F1 /* SeatCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 466A59282BDBED8A001251F1 /* SeatCell.xib */; };
 		466A592B2BDBEDA9001251F1 /* SeatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466A592A2BDBEDA9001251F1 /* SeatCell.swift */; };
 		466A592D2BDCFCBE001251F1 /* BusTicketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466A592C2BDCFCBE001251F1 /* BusTicketViewController.swift */; };
@@ -59,6 +58,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		461044E02BDFA1400096CC90 /* KeyboardFunction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardFunction.swift; sourceTree = "<group>"; };
+		461044E52BDFA8830096CC90 /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
+		46494B632BDF95AD00584851 /* CollectionHeaderImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionHeaderImage.swift; sourceTree = "<group>"; };
 		464A44B22BD63CE4005214CB /* HadiBilet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HadiBilet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		464A44B52BD63CE4005214CB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		464A44B72BD63CE4005214CB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -73,17 +75,13 @@
 		466A59042BD69386001251F1 /* City.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
 		466A59062BD693B7001251F1 /* Journey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Journey.swift; sourceTree = "<group>"; };
 		466A59082BD694AB001251F1 /* BusCompany.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusCompany.swift; sourceTree = "<group>"; };
-		466A590C2BD7A190001251F1 /* TravelSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelSearchView.swift; sourceTree = "<group>"; };
 		466A590E2BD7A4D4001251F1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../../Documents/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		466A59122BD7CCC7001251F1 /* createRandomData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = createRandomData.swift; sourceTree = "<group>"; };
 		466A59142BD7F9EB001251F1 /* JourneyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyCell.swift; sourceTree = "<group>"; };
 		466A59162BD7FAF6001251F1 /* JourneyCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JourneyCell.xib; sourceTree = "<group>"; };
 		466A591C2BDA7623001251F1 /* EntryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryViewController.swift; sourceTree = "<group>"; };
-		466A591E2BDA78A5001251F1 /* TravelSearchView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TravelSearchView.xib; sourceTree = "<group>"; };
 		466A59202BDA890C001251F1 /* CityFieldView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CityFieldView.xib; sourceTree = "<group>"; };
 		466A59222BDA8931001251F1 /* CityFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityFieldView.swift; sourceTree = "<group>"; };
-		466A59242BDBE6A4001251F1 /* BusView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BusView.xib; sourceTree = "<group>"; };
-		466A59262BDBE6B5001251F1 /* BusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusView.swift; sourceTree = "<group>"; };
 		466A59282BDBED8A001251F1 /* SeatCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SeatCell.xib; sourceTree = "<group>"; };
 		466A592A2BDBEDA9001251F1 /* SeatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeatCell.swift; sourceTree = "<group>"; };
 		466A592C2BDCFCBE001251F1 /* BusTicketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusTicketViewController.swift; sourceTree = "<group>"; };
@@ -123,6 +121,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		461044E22BDFA4280096CC90 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				466A59142BD7F9EB001251F1 /* JourneyCell.swift */,
+				466A59162BD7FAF6001251F1 /* JourneyCell.xib */,
+				466A59282BDBED8A001251F1 /* SeatCell.xib */,
+				466A592A2BDBEDA9001251F1 /* SeatCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		461044E42BDFA8680096CC90 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				461044E52BDFA8830096CC90 /* AlertManager.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		46494B652BDFA0F900584851 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				461044E02BDFA1400096CC90 /* KeyboardFunction.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		464A44A92BD63CE4005214CB = {
 			isa = PBXGroup;
 			children = (
@@ -142,6 +167,8 @@
 		464A44B42BD63CE4005214CB /* HadiBilet */ = {
 			isa = PBXGroup;
 			children = (
+				461044E42BDFA8680096CC90 /* Utilities */,
+				46494B652BDFA0F900584851 /* Extensions */,
 				46D1B39D2BD6902400C5E154 /* Helpers */,
 				464A44CC2BD63ED7005214CB /* Resources */,
 				464A44C92BD63E90005214CB /* Models */,
@@ -149,8 +176,6 @@
 				464A44CA2BD63EA1005214CB /* Views */,
 				464A44B72BD63CE4005214CB /* SceneDelegate.swift */,
 				464A44CB2BD63EB5005214CB /* Controllers */,
-				464A44BB2BD63CE4005214CB /* Main.storyboard */,
-				464A44C02BD63CE6005214CB /* LaunchScreen.storyboard */,
 				464A44C32BD63CE6005214CB /* Info.plist */,
 				466A590E2BD7A4D4001251F1 /* GoogleService-Info.plist */,
 				46522E4A2BDEDBA40071E333 /* Tickets.xcdatamodeld */,
@@ -176,18 +201,12 @@
 		464A44CA2BD63EA1005214CB /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				466A590C2BD7A190001251F1 /* TravelSearchView.swift */,
-				466A59142BD7F9EB001251F1 /* JourneyCell.swift */,
-				466A59162BD7FAF6001251F1 /* JourneyCell.xib */,
-				466A591E2BDA78A5001251F1 /* TravelSearchView.xib */,
+				461044E22BDFA4280096CC90 /* Cells */,
 				466A59202BDA890C001251F1 /* CityFieldView.xib */,
 				466A59222BDA8931001251F1 /* CityFieldView.swift */,
-				466A59242BDBE6A4001251F1 /* BusView.xib */,
-				466A59262BDBE6B5001251F1 /* BusView.swift */,
-				466A59282BDBED8A001251F1 /* SeatCell.xib */,
-				466A592A2BDBEDA9001251F1 /* SeatCell.swift */,
 				466A59302BDE5EDD001251F1 /* PassengerInfoView.swift */,
 				466A59322BDE5F09001251F1 /* PassengerInfoView.xib */,
+				46494B632BDF95AD00584851 /* CollectionHeaderImage.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -215,6 +234,8 @@
 		464A44CD2BD63F1B005214CB /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
+				464A44BB2BD63CE4005214CB /* Main.storyboard */,
+				464A44C02BD63CE6005214CB /* LaunchScreen.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -308,12 +329,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				466A59172BD7FAF6001251F1 /* JourneyCell.xib in Resources */,
-				466A59252BDBE6A5001251F1 /* BusView.xib in Resources */,
 				464A44BF2BD63CE6005214CB /* Assets.xcassets in Resources */,
 				466A590F2BD7A4D4001251F1 /* GoogleService-Info.plist in Resources */,
 				464A44C22BD63CE6005214CB /* Base in Resources */,
 				466A59292BDBED8B001251F1 /* SeatCell.xib in Resources */,
-				466A591F2BDA78A5001251F1 /* TravelSearchView.xib in Resources */,
 				466A59332BDE5F09001251F1 /* PassengerInfoView.xib in Resources */,
 				464A44BD2BD63CE4005214CB /* Base in Resources */,
 				466A59212BDA890C001251F1 /* CityFieldView.xib in Resources */,
@@ -330,22 +349,23 @@
 				464A44BA2BD63CE4005214CB /* ViewController.swift in Sources */,
 				466A59032BD6911C001251F1 /* FirebaseHelpers.swift in Sources */,
 				46522E492BDED8090071E333 /* TicketListViewController.swift in Sources */,
-				466A590D2BD7A190001251F1 /* TravelSearchView.swift in Sources */,
 				466A59072BD693B7001251F1 /* Journey.swift in Sources */,
 				466A59152BD7F9EB001251F1 /* JourneyCell.swift in Sources */,
 				466A591D2BDA7623001251F1 /* EntryViewController.swift in Sources */,
+				461044E12BDFA1400096CC90 /* KeyboardFunction.swift in Sources */,
 				46D1B3732BD6411D00C5E154 /* DateStruct.swift in Sources */,
 				466A59092BD694AB001251F1 /* BusCompany.swift in Sources */,
+				46494B642BDF95AD00584851 /* CollectionHeaderImage.swift in Sources */,
 				466A59132BD7CCC7001251F1 /* createRandomData.swift in Sources */,
 				46D1B3772BD646CE00C5E154 /* Seat.swift in Sources */,
 				46522E4C2BDEDBA40071E333 /* Tickets.xcdatamodeld in Sources */,
 				46D1B3752BD6452E00C5E154 /* Time.swift in Sources */,
 				464A44B62BD63CE4005214CB /* AppDelegate.swift in Sources */,
 				466A59232BDA8931001251F1 /* CityFieldView.swift in Sources */,
+				461044E62BDFA8830096CC90 /* AlertManager.swift in Sources */,
 				466A59312BDE5EDD001251F1 /* PassengerInfoView.swift in Sources */,
 				466A59052BD69386001251F1 /* City.swift in Sources */,
 				46D1B3712BD640F300C5E154 /* Ticket.swift in Sources */,
-				466A59272BDBE6B5001251F1 /* BusView.swift in Sources */,
 				46D1B36F2BD640DE00C5E154 /* Passenger.swift in Sources */,
 				466A592D2BDCFCBE001251F1 /* BusTicketViewController.swift in Sources */,
 				466A592B2BDBEDA9001251F1 /* SeatCell.swift in Sources */,
@@ -507,8 +527,8 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -535,8 +555,8 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

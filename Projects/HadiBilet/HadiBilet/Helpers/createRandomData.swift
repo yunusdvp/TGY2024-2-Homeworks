@@ -111,7 +111,6 @@ func generateRandomJourneys() -> [Journey] {
     return journeys
 }
 
-// Yolculuk süresi hesaplama
 func calculateTravelTime(fromCity: String, toCity: String) -> Int {
     let travelTimes = [
         ("Mersin", "Adana", 1),
