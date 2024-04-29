@@ -3,58 +3,59 @@ import UIKit
 
 class EntryViewController: UIViewController{
     
-    //@IBOutlet weak var neredenView: CityFieldView!
-    
-    @IBOutlet weak var neredenTextField: UITextField!
-    
+    @IBOutlet weak var neredenView: CityFieldView!
     @IBOutlet weak var datePicker: UIDatePicker!
-    @IBOutlet weak var NereyeTextField: UITextField!
-    // @IBOutlet weak var nereyeView: CityFieldView!
+    @IBOutlet weak var nereyeView: CityFieldView!
+    let cities = ["Mersin","Adana","İstanbul","Ankara"]
     override func viewDidLoad() {
+        neredenView.delegate = self
+        nereyeView.delegate = self
         super.viewDidLoad()
-        print(datePicker.date.hashValue)
-        
-        
-        /*let model = City(cityName: "Mersin")
-        let model2 = City(cityName: "İstanbul")
-        neredenView.setup(model: model)
-        nereyeView.setup(model: model2)
-        neredenView.headerLabel.text = "Nereden"
-        nereyeView.headerLabel.text = "Nereye"
-        */
+        nereyeView.cityTextField.placeholder = "Nereye"
+        neredenView.setupPicker(cities: cities)
+        nereyeView.setupPicker(cities: cities)
+        datePicker.minimumDate = Date()
+
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "goToSecondViewController" {
             if let destinationVC = segue.destination as? ViewController {
-                destinationVC.nereden = neredenTextField.text
-                destinationVC.nereye = NereyeTextField.text
-                
-
-                // UIDatePicker nesnesinin bir örneğini oluşturun.
-
-                // datePicker'dan seçilen tarih örneğini alın.
+                destinationVC.nereden = neredenView.cityTextField.text
+                destinationVC.nereye = nereyeView.cityTextField.text
                 let selectedDate = datePicker.date
-                // Calendar sınıfını kullanarak tarih bileşenlerini alın.
                 let calendar = Calendar.current
                 let month = calendar.component(.month, from: selectedDate)
                 let day = calendar.component(.day, from: selectedDate)
-                // Şimdi "month" değişkeni, yılın kaçıncı ayı olduğunu tutar (1-12 arası).
                 destinationVC.day = day
                 destinationVC.month = month
 
             }
         }
     }
+    func showAlert(message: String) {
+        let alert = UIAlertController(title: "Hata", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Tamam", style: .default))
+        present(alert, animated: true)
+    }
 
     
-    
-    
-    
-    @IBAction func reverseCityButtonA(_ sender: UIButton) {
-        performSegue(withIdentifier: "goToSecondViewController", sender: self)
+    @IBAction func searchButton(_ sender: UIButton) {
+        guard let nereden = neredenView.cityTextField.text, !nereden.isEmpty,
+                  let nereye = nereyeView.cityTextField.text, !nereye.isEmpty else {
+                showAlert(message: "Lütfen şehir seçimini yapın.")
+                return
+            }
+            
+            performSegue(withIdentifier: "goToSecondViewController", sender: self)
     }
-    
-    /*@IBAction func goButton(_ sender: UIButton) {
-    }*/
+}
+extension EntryViewController: CityFieldViewDelegate{
+    func cityDidSelect(_ cityFieldView: CityFieldView, selectedCity: String) {
+        if cityFieldView == neredenView {
+                    nereyeView.setupPicker(cities: cities.filter { $0 != selectedCity })
+                } else if cityFieldView == nereyeView {
+                    neredenView.setupPicker(cities: cities.filter { $0 != selectedCity })
+                }
+    }
     
 }

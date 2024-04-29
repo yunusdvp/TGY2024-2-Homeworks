@@ -9,6 +9,10 @@ import UIKit
 
 class TicketListViewController: UIViewController {
 
+    @IBOutlet weak var nereyeView: CityFieldView!
+    @IBOutlet weak var neredenView: CityFieldView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -16,6 +20,8 @@ class TicketListViewController: UIViewController {
     }
     
 
+    @IBAction func buttonTapped(_ sender: Any) {
+    }
     /*
     // MARK: - Navigation
 

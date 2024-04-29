@@ -14,6 +14,7 @@
 		464A44BF2BD63CE6005214CB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 464A44BE2BD63CE6005214CB /* Assets.xcassets */; };
 		464A44C22BD63CE6005214CB /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 464A44C12BD63CE6005214CB /* Base */; };
 		46522E492BDED8090071E333 /* TicketListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46522E482BDED8090071E333 /* TicketListViewController.swift */; };
+		46522E4C2BDEDBA40071E333 /* Tickets.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 46522E4A2BDEDBA40071E333 /* Tickets.xcdatamodeld */; };
 		466A59032BD6911C001251F1 /* FirebaseHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466A59022BD6911C001251F1 /* FirebaseHelpers.swift */; };
 		466A59052BD69386001251F1 /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466A59042BD69386001251F1 /* City.swift */; };
 		466A59072BD693B7001251F1 /* Journey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466A59062BD693B7001251F1 /* Journey.swift */; };
@@ -67,6 +68,7 @@
 		464A44C12BD63CE6005214CB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		464A44C32BD63CE6005214CB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		46522E482BDED8090071E333 /* TicketListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketListViewController.swift; sourceTree = "<group>"; };
+		46522E4B2BDEDBA40071E333 /* Tickets.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Tickets.xcdatamodel; sourceTree = "<group>"; };
 		466A59022BD6911C001251F1 /* FirebaseHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseHelpers.swift; sourceTree = "<group>"; };
 		466A59042BD69386001251F1 /* City.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
 		466A59062BD693B7001251F1 /* Journey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Journey.swift; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 				464A44C02BD63CE6005214CB /* LaunchScreen.storyboard */,
 				464A44C32BD63CE6005214CB /* Info.plist */,
 				466A590E2BD7A4D4001251F1 /* GoogleService-Info.plist */,
+				46522E4A2BDEDBA40071E333 /* Tickets.xcdatamodeld */,
 			);
 			path = HadiBilet;
 			sourceTree = "<group>";
@@ -335,6 +338,7 @@
 				466A59092BD694AB001251F1 /* BusCompany.swift in Sources */,
 				466A59132BD7CCC7001251F1 /* createRandomData.swift in Sources */,
 				46D1B3772BD646CE00C5E154 /* Seat.swift in Sources */,
+				46522E4C2BDEDBA40071E333 /* Tickets.xcdatamodeld in Sources */,
 				46D1B3752BD6452E00C5E154 /* Time.swift in Sources */,
 				464A44B62BD63CE4005214CB /* AppDelegate.swift in Sources */,
 				466A59232BDA8931001251F1 /* CityFieldView.swift in Sources */,
@@ -662,6 +666,20 @@
 			productName = "FirebaseStorageCombine-Community";
 		};
 /* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		46522E4A2BDEDBA40071E333 /* Tickets.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				46522E4B2BDEDBA40071E333 /* Tickets.xcdatamodel */,
+			);
+			currentVersion = 46522E4B2BDEDBA40071E333 /* Tickets.xcdatamodel */;
+			name = Tickets.xcdatamodeld;
+			path = "/Users/ozsahin/Desktop/Turkcell/TGY2024-2-Homeworks/Projects/HadiBilet/HadiBilet/Tickets.xcdatamodeld";
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 464A44AA2BD63CE4005214CB /* Project object */;
 }

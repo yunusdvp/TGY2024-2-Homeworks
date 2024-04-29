@@ -6,10 +6,10 @@
 //
 
 import UIKit
-
+import CoreData
 class BusTicketViewController: UIViewController {
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var journey :Journey?
-    
     @IBOutlet weak var passengeerInfoView: PassengerInfoView!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var busSeatCollectionView: UICollectionView!
@@ -58,6 +58,31 @@ class BusTicketViewController: UIViewController {
         !(passengeerInfoView.passengerSurnameTextField.text?.isEmpty ?? true) &&
         (passengeerInfoView.passengerGenderControl.selectedSegmentIndex != UISegmentedControl.noSegment)
     }
+    private func showTicketDetails() {
+            guard let journey = self.journey else { return }
+            guard let selectedSeats = busSeatCollectionView.indexPathsForSelectedItems, !selectedSeats.isEmpty else { return }
+            
+            let seatNumbers = selectedSeats.map { "\($0.row + 1)" }.joined(separator: ", ")
+            let formattedDate = formatDateString(journey.departureDate)
+        let journeyDetails = "\(journey.fromCity.cityName) - \(journey.toCity.cityName) - \(formattedDate), \(journey.travelDuration) saat"
+            let ticketInfo = "Journey: \(journeyDetails)\nSeats: \(seatNumbers)"
+            
+            let alert = UIAlertController(title: "Bilet Detayınız", message: ticketInfo, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(alert, animated: true)
+        }
+        
+        private func formatDateString(_ date: DateStruct) -> String {
+            let dateComponents = DateComponents(year: date.year, month: date.month, day: date.day, hour: date.hour, minute: date.minute)
+            let calendar = Calendar.current
+            if let date = calendar.date(from: dateComponents) {
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateStyle = .medium
+                dateFormatter.timeStyle = .short
+                return dateFormatter.string(from: date)
+            }
+            return "\(date.day)-\(date.month)-\(date.year) at \(date.hour):\(String(format: "%02d", date.minute))"
+        }
     @IBAction func BuyTicketButton(_ sender: UIButton) {
         guard arePassengerDetailsFilled() else {
             showAlert(message: "Lütfen önce yolcu bilgilerini doldurun.")
@@ -91,11 +116,15 @@ class BusTicketViewController: UIViewController {
             self.firebaseHelpers.updateSelectedSeatsInJourney(journeyId: self.journey?.id ?? "", seats: updatedSeats, selectedIndexes: selectedIndexes) { success in
                 if success {
                     print("All selected seats updated successfully.")
+                    self.showTicketDetails()
                 } else {
                     print("Failed to update selected seats")
                 }
             }
+        
+        
     }
+    
 }
 extension BusTicketViewController: UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
